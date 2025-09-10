@@ -10,6 +10,7 @@ describe("GET api/tasks", () => {
   it("it should return an array of tasks", async () => {
     const res = await request(app).get("/api/tasks");
     expect(Array.isArray(res.body)).toBe(true);
+    console.log(res.body.tasks, 'data seeded');
     // Optionally, check the contents:
     // expect(res.body.length).toBeGreaterThan(0);
     // expect(res.body[0]).toHaveProperty("text");
