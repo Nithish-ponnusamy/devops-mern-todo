@@ -1,12 +1,9 @@
-
 services:
   mongo:
     image: "mongo"
     container_name: mongo
     ports:
       - "8080:27017"
-    
-    
 
   backend:
     build: ./backend
@@ -14,7 +11,7 @@ services:
 
     ports:
       - "5000:5000"
-  
+
     depends_on:
       - mongo
     env_file:
@@ -29,3 +26,9 @@ services:
       - backend
     env_file:
       - "./frontend/.env.prod"
+
+script: |
+  cd /home/ubuntu/devops-mern-todo/
+  git pull origin main
+  docker-compose down
+  docker-compose up --build -d
